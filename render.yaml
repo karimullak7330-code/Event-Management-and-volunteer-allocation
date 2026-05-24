@@ -4,8 +4,8 @@ services:
     env: python
     plan: free
     region: oregon
-    buildCommand: python -m pip install --upgrade pip setuptools && pip install -r requirements.txt
-    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    buildCommand: python -m pip install --upgrade pip setuptools wheel && python -m pip install -r requirements.txt
+    startCommand: python -m waitress --listen=0.0.0.0:$PORT app:app
     envVars:
       - key: SECRET_KEY
         value: ""
