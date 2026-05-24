@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>📅 Upcoming Events</h1>
+  {% if not current_user.is_authenticated %}
+    <div class="alert alert-info">👋 Welcome! <a href="{{ url_for('login') }}">Login</a> or <a href="{{ url_for('register') }}">Register</a> to get started.</div>
+  {% endif %}
+  <div class="list-group">
+    {% for e in events %}
+      <div class="list-group-item">
+        <h5>{{ e.title }} <small class="text-muted">{{ e.date }}</small></h5>
+        <p>{{ e.location }} - {{ e.description }}</p>
+      </div>
+    {% else %}
+      <div>No events yet.</div>
+    {% endfor %}
+  </div>
+{% endblock %}

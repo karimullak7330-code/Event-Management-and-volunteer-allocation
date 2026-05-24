@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Admin Dashboard <span class="royal-badge">👑</span></h2>
+    <a class="btn btn-secondary" href="{{ url_for('index') }}">← Back Home</a>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-12">
+      <a class="btn btn-info" href="{{ url_for('admin_submissions') }}">📋 View Submissions</a>
+      <a class="btn btn-primary ms-2" href="{{ url_for('admin_events') }}">📅 Manage Events</a>
+      <a class="btn btn-success ms-2" href="{{ url_for('admin_tasks') }}">✅ Manage Tasks</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card p-3 mb-3">
+        <strong>Total tasks:</strong> {{ total_tasks }}
+        <br><strong>Completed:</strong> <span class="badge bg-success">{{ completed }}</span>
+        <br><strong>Pending:</strong> <span class="badge bg-warning text-dark">{{ pending }}</span>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h4>Events</h4>
+      <ul class="list-group">
+        {% for e in events %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong>{{ e.title }}</strong> <small class="text-muted">{{ e.date }}</small>
+              <div>{{ e.venue }} {% if e.start_time %}{{ e.start_time.strftime('%H:%M') }}-{{ e.end_time.strftime('%H:%M') }}{% endif %}</div>
+            </div>
+            <div>
+              <a class="btn btn-sm btn-outline-primary" href="{{ url_for('edit_event', event_id=e.id) }}">Edit</a>
+              <form style="display:inline" method="post" action="{{ url_for('delete_event', event_id=e.id) }}">
+                <button class="btn btn-sm btn-danger">Delete</button>
+              </form>
+            </div>
+          </li>
+        {% else %}
+          <li class="list-group-item">No events</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}

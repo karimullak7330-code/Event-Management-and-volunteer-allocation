@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>📋 Volunteer Submissions</h2>
+    <a class="btn btn-secondary" href="{{ url_for('admin_dashboard') }}">← Back to Dashboard</a>
+  </div>
+  <table class="table">
+    <thead><tr><th>Submitted</th><th>Task</th><th>By</th><th>File</th><th>Comment</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>
+      {% for s in submissions %}
+        <tr>
+          <td>{{ s.submitted_at }}</td>
+          <td>{{ s.task.task_name }}</td>
+          <td>{{ s.user.name }}</td>
+          <td><a href="{{ url_for('uploaded_file', filename=s.filename) }}" target="_blank">Download</a></td>
+          <td>{{ s.comment }}</td>
+          <td>{{ s.status }}</td>
+          <td>
+            <form method="post" action="{{ url_for('approve_submission', sub_id=s.id) }}">
+              <select name="status" class="form-select form-select-sm d-inline" style="width:120px;display:inline-block">
+                <option value="approved">Approve</option>
+                <option value="rejected">Reject</option>
+              </select>
+              <button class="btn btn-sm btn-primary">Save</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

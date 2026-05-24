@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>✅ Manage Tasks</h2>
+    <a class="btn btn-secondary" href="{{ url_for('admin_dashboard') }}">← Back to Dashboard</a>
+  </div>
+  <a class="btn btn-success mb-3" href="{{ url_for('new_task') }}">➕ Create Task</a>
+  <a class="btn btn-info mb-3 ms-2" href="{{ url_for('admin_submissions') }}">📋 View Submissions</a>
+  <table class="table">
+    <thead><tr><th>Task</th><th>Event</th><th>Est. Window</th><th>Status</th><th>Assigned</th><th>Actions</th></tr></thead>
+    <tbody>
+      {% for t in tasks %}
+        <tr>
+          <td>{{ t.task_name }}</td>
+          <td>{{ t.event.title }}</td>
+          <td>
+            {% if t.est_start and t.est_end %}
+              {{ t.est_start.strftime('%H:%M') }} - {{ t.est_end.strftime('%H:%M') }}
+            {% else %}
+              <span class="text-muted">(not set)</span>
+            {% endif %}
+          </td>
+          <td>
+            {% if t.status == 'completed' %}
+              <span class="badge bg-success">Completed</span>
+            {% else %}
+              <span class="badge bg-warning text-dark">Pending</span>
+            {% endif %}
+          </td>
+          <td>
+            {% for a in t.assignments %}
+              <div>{{ a.user.name }}</div>
+            {% else %}
+              <div class="text-muted">(none)</div>
+            {% endfor %}
+          </td>
+          <td>
+            <div class="d-flex gap-2 flex-wrap">
+              <form method="post" action="{{ url_for('assign_task', task_id=t.id) }}" class="d-flex gap-1">
+                <select name="user_id" class="form-select form-select-sm" style="max-width:180px;">
+                  <option value="">Select volunteer...</option>
+                  {% for v in volunteers %}
+                    <option value="{{ v.id }}">{{ v.name }}</option>
+                  {% endfor %}
+                </select>
+                <button class="btn btn-sm btn-primary">✓ Assign</button>
+              </form>
+              <form method="post" action="{{ url_for('change_task_status', task_id=t.id) }}">
+                <input type="hidden" name="status" value="{{ 'pending' if t.status=='completed' else 'completed' }}">
+                <button class="btn btn-sm btn-warning">{{ '↩️ Reopen' if t.status=='completed' else '✅ Complete' }}</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

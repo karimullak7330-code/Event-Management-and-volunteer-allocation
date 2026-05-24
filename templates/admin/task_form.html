@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>➕ Create New Task</h2>
+    <a class="btn btn-secondary" href="{{ url_for('admin_tasks') }}">← Back to Tasks</a>
+  </div>
+  <form method="post" class="card p-4">
+    <div class="mb-3">
+      <label class="form-label">Event</label>
+      <select class="form-select" name="event_id" required>
+        {% for e in events %}
+          <option value="{{ e.id }}">{{ e.title }} - {{ e.date }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Task name</label>
+      <input class="form-control" name="task_name" required>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Estimated start</label>
+        <input class="form-control" name="est_start" type="time">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Estimated end</label>
+        <input class="form-control" name="est_end" type="time">
+      </div>
+    </div>
+    <button class="btn btn-success">💾 Create Task</button>
+    <a class="btn btn-secondary ms-2" href="{{ url_for('admin_tasks') }}">Cancel</a>
+  </form>
+{% endblock %}

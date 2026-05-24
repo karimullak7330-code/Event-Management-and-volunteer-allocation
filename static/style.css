@@ -1,0 +1,221 @@
+body { 
+  padding-bottom: 40px; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.badge-overdue { background: #dc3545; }
+.badge-pending { background: #ffc107; color:#000 }
+.badge-complete { background: #198754; }
+
+.royal-badge { 
+  display:inline-block; 
+  padding:4px 8px; 
+  background: linear-gradient(90deg,#f6d365,#fda085); 
+  border-radius:6px; 
+  color:#5a2a83; 
+  font-weight:700; 
+}
+
+/* Button Styling */
+.btn { 
+  font-weight: 600; 
+  transition: all 0.3s ease; 
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.btn:hover { 
+  transform: translateY(-2px); 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+}
+
+.btn-primary { 
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+  border: none;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  color: white;
+}
+
+.btn-success { 
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); 
+  border: none;
+  color: white;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+  color: white;
+}
+
+.btn-info { 
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
+  border: none;
+  color: white;
+}
+
+.btn-info:hover {
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+  color: white;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #9b9d9f 0%, #5a5a5a 100%);
+  border: none;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #5a5a5a 0%, #9b9d9f 100%);
+  color: white;
+}
+
+/* Card Styling */
+.card { 
+  border: none; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+  border-radius: 12px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Table Styling */
+.table { 
+  border-radius: 12px; 
+  overflow: hidden;
+  background: white;
+}
+
+.table thead { 
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+  color: white;
+  font-weight: 600;
+}
+
+.table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+  transform: scale(1.01);
+}
+
+/* Form Styling */
+.form-control, .form-select { 
+  border-radius: 8px; 
+  border: 2px solid #e0e0e0; 
+  transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus { 
+  border-color: #667eea; 
+  box-shadow: 0 0 0 0.2rem rgba(102,126,234,0.25); 
+}
+
+.form-label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* Navbar */
+.navbar { 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white !important;
+}
+
+/* List Group */
+.list-group-item { 
+  border: 2px solid #f0f0f0; 
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.list-group-item:hover { 
+  background-color: #f8f9fa; 
+  border-color: #667eea;
+  transform: translateX(5px);
+}
+
+/* Alert Styling */
+.alert { 
+  border-radius: 12px; 
+  border: none;
+}
+
+.alert-info { 
+  background: linear-gradient(135deg, #e0f7ff 0%, #f0e7ff 100%); 
+  color: #003d5c;
+}
+
+/* Heading */
+h1, h2, h3 {
+  color: #333;
+  font-weight: 700;
+}
+
+/* Links */
+a {
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.container {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  flex-grow: 1;
+}
+
+/* Footer Styling */
+footer {
+  margin-top: auto;
+  border-top: 2px solid #667eea;
+}
+
+footer p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+footer strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+footer small {
+  font-size: 0.9rem;
+}
+
+footer .text-muted {
+  color: #b0b0b0 !important;
+}
+
+footer hr {
+  border-color: #555;
+  margin: 10px 0;
+}
+

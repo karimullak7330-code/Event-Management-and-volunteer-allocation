@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>📋 Register</h2>
+    <a class="btn btn-secondary" href="{{ url_for('index') }}">← Back Home</a>
+  </div>
+  <form method="post" class="card p-4" style="max-width:400px;">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input class="form-control" name="name" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input class="form-control" name="email" type="email" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input class="form-control" name="password" type="password" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Role</label>
+      <select name="role" class="form-select">
+        <option value="volunteer">Volunteer</option>
+      </select>
+    </div>
+    <button class="btn btn-success w-100">✅ Register as Volunteer</button>
+  </form>
+  <p class="mt-3">Already registered? <a href="{{ url_for('login') }}">Login here</a></p>
+{% endblock %}
