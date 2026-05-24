@@ -6,6 +6,29 @@
 
 ---
 
+## ☁️ Deploy to Render
+
+Quick steps to deploy this app to Render (recommended for Flask + Gunicorn):
+
+1. Push your repository to GitHub (already done).
+2. Sign in to https://render.com and click **New** → **Web Service**.
+3. Connect your GitHub repository and select the `main` branch.
+4. Render will detect `render.yaml` and prefill settings. If it doesn't, use:
+  - **Build Command:** `pip install -r requirements.txt`
+  - **Start Command:** `gunicorn app:app`
+5. In the Render dashboard add Environment Variables:
+  - `SECRET_KEY` (required)
+  - `FLASK_DEBUG=0` (production)
+  - `GEMINI_API_KEY` (optional — enables chatbot)
+  - `DATABASE_URL` (optional — set Postgres URI when using Postgres)
+6. Create the service and wait for the first deploy. View logs from the Render dashboard.
+
+Notes:
+- The repo already includes a `Procfile` and `requirements.txt` with `gunicorn`.
+- `render.yaml` is included to enable auto-deploy configuration. Replace placeholder env values in the dashboard — do not commit secrets.
+- For production use, prefer a managed Postgres and set `DATABASE_URL` accordingly.
+
+
 ## 📋 Table of Contents
 1. [System Overview](#system-overview)
 2. [Tech Stack](#tech-stack)

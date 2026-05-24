@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: event-management
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        value: ""
+        sync: false
+      - key: FLASK_DEBUG
+        value: "0"
+        sync: false
+      - key: GEMINI_API_KEY
+        value: ""
+        sync: false
+      - key: DATABASE_URL
+        value: ""
+        sync: false
+    autoDeploy: true
